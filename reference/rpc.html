@@ -1,0 +1,1108 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RPC &mdash; neon-js 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="neon-js 1.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Reference" href="index.html"/>
+        <link rel="next" title="Smart Contract" href="sc.html"/>
+        <link rel="prev" title="API" href="api.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> neon-js
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wallet.html">Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transactions/index.html">Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc/index.html">Node RPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../smart_contracts/index.html">Smart Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utility.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constants.html">Constants</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc.html">Smart Contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tx.html">Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html">Wallet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">neon-js</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference</a> &raquo;</li>
+        
+      <li>RPC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/rpc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rpc">
+<h1>RPC<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h1>
+<p>Module <code class="docutils literal"><span class="pre">rpc</span></code></p>
+<dl class="class">
+<dt id="RPCClient">
+<em class="property">class </em><code class="descname">RPCClient</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>RPC Client model to query a NEO node. Contains built-in methods to query using RPC calls.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>net</strong> (<em>string</em>) – ‘MainNet’ or ‘TestNet’ will query the default RPC address found in consts. You may provide a custom URL.</li>
+<li><strong>version</strong> (<em>string</em>) – Version of NEO node. Used to check if RPC methods have been implemented. it will default to DEFAULT_RPC found in CONST</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="RPCClient.execute">
+<code class="descclassname">RPCClient.</code><code class="descname">execute</code><span class="sig-paren">(</span><em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes an Query object and executes it. Adds the Query object to history.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>query</strong> (<a class="reference internal" href="#Query" title="Query"><em>Query</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise.&lt;any&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getAccountState">
+<code class="descclassname">RPCClient.</code><code class="descname">getAccountState</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getAccountState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the state of an account given an address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>addr</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise.&lt;Object&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getAssetState">
+<code class="descclassname">RPCClient.</code><code class="descname">getAssetState</code><span class="sig-paren">(</span><em>assetId</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getAssetState" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>assetId</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise.&lt;Object&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getBestBlockHash">
+<code class="descclassname">RPCClient.</code><code class="descname">getBestBlockHash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getBestBlockHash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the latest block hash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Promise.&lt;string&gt;</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getBlock">
+<code class="descclassname">RPCClient.</code><code class="descname">getBlock</code><span class="sig-paren">(</span><em>indexOrHash</em>, <em>verbose</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the block at a given height or hash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>indexOrHash</strong> (<em>string|number</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise.&lt;(Object|string)&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getBlockCount">
+<code class="descclassname">RPCClient.</code><code class="descname">getBlockCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getBlockCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current block height.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Promise.&lt;number&gt;</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getBlockSysFee">
+<code class="descclassname">RPCClient.</code><code class="descname">getBlockSysFee</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getBlockSysFee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the system fees of a block.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>index</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getConnectionCount">
+<code class="descclassname">RPCClient.</code><code class="descname">getConnectionCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getConnectionCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of peers this node is connected to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>number</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getContractState">
+<code class="descclassname">RPCClient.</code><code class="descname">getContractState</code><span class="sig-paren">(</span><em>scriptHash</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getContractState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the state of the contract at the given scriptHash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise.&lt;Object&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getPeers">
+<code class="descclassname">RPCClient.</code><code class="descname">getPeers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getPeers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all peers that this node has discovered.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Promise.&lt;Object&gt;</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getRawMemPool">
+<code class="descclassname">RPCClient.</code><code class="descname">getRawMemPool</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getRawMemPool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all transaction hashes waiting to be processed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Promise.&lt;Array.&lt;string&gt;&gt;</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getRawTransaction">
+<code class="descclassname">RPCClient.</code><code class="descname">getRawTransaction</code><span class="sig-paren">(</span><em>txid</em>, <em>verbose</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getRawTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a transaction based on its hash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>txid</strong> (<em>string</em>) – </li>
+<li><strong>verbose</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:param Promise.&lt;(string|object)&gt; :</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getStorage">
+<code class="descclassname">RPCClient.</code><code class="descname">getStorage</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the corresponding value of a key in the storage of a contract address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+<li><strong>key</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>string</strong> – value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getTxOut">
+<code class="descclassname">RPCClient.</code><code class="descname">getTxOut</code><span class="sig-paren">(</span><em>txid</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getTxOut" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>txid</strong> (<em>string</em>) – </li>
+<li><strong>index</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:param :</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.getVersion">
+<code class="descclassname">RPCClient.</code><code class="descname">getVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.getVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the version of the NEO node. This method will never be blocked by version. This method will also update the current Client’s version to the one received.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="RPCClient.history">
+<code class="descclassname">RPCClient.</code><code class="descname">history</code><a class="headerlink" href="#RPCClient.history" title="Permalink to this definition">¶</a></dt>
+<dd><p>History of queries made with this client.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.invoke">
+<code class="descclassname">RPCClient.</code><code class="descname">invoke</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.invoke" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls a smart contract with the given parameters. This method is a local invoke, results are not reflected on the blockchain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+<li><strong>params</strong> (<em>Array</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.invokeFunction">
+<code class="descclassname">RPCClient.</code><code class="descname">invokeFunction</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>operation</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.invokeFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a contract method call with parameters for the node to run. This method is a local invoke, results are not reflected on the blockchain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+<li><strong>operation</strong> (<em>string</em>) – </li>
+<li><strong>params</strong> (<em>Array</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.invokeScript">
+<code class="descclassname">RPCClient.</code><code class="descname">invokeScript</code><span class="sig-paren">(</span><em>script</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.invokeScript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a script for the node to run. This method is a local invoke, results are not reflected on the blockchain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>script</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.query">
+<code class="descclassname">RPCClient.</code><code class="descname">query</code><span class="sig-paren">(</span><em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a query with the given req and immediately executes it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>req</strong> (<em>Object</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise.&lt;any&gt;</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.sendRawTransaction">
+<code class="descclassname">RPCClient.</code><code class="descname">sendRawTransaction</code><span class="sig-paren">(</span><em>transaction</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.sendRawTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a serialized transaction to the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>transaction</strong> (<em>Transaction|string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>boolean</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.submitBlock">
+<code class="descclassname">RPCClient.</code><code class="descname">submitBlock</code><span class="sig-paren">(</span><em>block</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.submitBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a serialized block to the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>block</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RPCClient.validateAddress">
+<code class="descclassname">RPCClient.</code><code class="descname">validateAddress</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#RPCClient.validateAddress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the provided address is a valid NEO address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>addr</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>boolean</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="RPCClient.version">
+<code class="descclassname">RPCClient.</code><code class="descname">version</code><a class="headerlink" href="#RPCClient.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Version of this client. Used to check if RPC call is implemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Query">
+<em class="property">class </em><code class="descname">Query</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Query" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Query object helps us to construct and record requests</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>req</strong> (<em>Object</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="Query.completed">
+<code class="descclassname">Query.</code><code class="descname">completed</code><a class="headerlink" href="#Query.completed" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this request has been completed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.execute">
+<code class="descclassname">Query.</code><code class="descname">execute</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes the Query by sending the RPC request to the provided net.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>string</em>) – The URL of the node.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getAccountState">
+<code class="descclassname">Query.</code><code class="descname">getAccountState</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getAccountState" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>addr</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getAssetState">
+<code class="descclassname">Query.</code><code class="descname">getAssetState</code><span class="sig-paren">(</span><em>assetId</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getAssetState" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>assetId</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getBestBlockHash">
+<code class="descclassname">Query.</code><code class="descname">getBestBlockHash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Query.getBestBlockHash" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Query</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getBlock">
+<code class="descclassname">Query.</code><code class="descname">getBlock</code><span class="sig-paren">(</span><em>indexOrHash</em>, <em>verbose</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getBlock" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>indexOrHash</strong> (<em>string|number</em>) – </li>
+<li><strong>verbose</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getBlockCount">
+<code class="descclassname">Query.</code><code class="descname">getBlockCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Query.getBlockCount" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Query</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getBlockSysFee">
+<code class="descclassname">Query.</code><code class="descname">getBlockSysFee</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getBlockSysFee" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getConnectionCount">
+<code class="descclassname">Query.</code><code class="descname">getConnectionCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Query.getConnectionCount" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Query</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getContractState">
+<code class="descclassname">Query.</code><code class="descname">getContractState</code><span class="sig-paren">(</span><em>scriptHash</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getContractState" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getPeers">
+<code class="descclassname">Query.</code><code class="descname">getPeers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Query.getPeers" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Query</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getRawMemPool">
+<code class="descclassname">Query.</code><code class="descname">getRawMemPool</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Query.getRawMemPool" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Query</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getRawTransaction">
+<code class="descclassname">Query.</code><code class="descname">getRawTransaction</code><span class="sig-paren">(</span><em>txid</em>, <em>verbose</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getRawTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>txid</strong> (<em>string</em>) – </li>
+<li><strong>verbose</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getStorage">
+<code class="descclassname">Query.</code><code class="descname">getStorage</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getStorage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+<li><strong>key</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getTxOut">
+<code class="descclassname">Query.</code><code class="descname">getTxOut</code><span class="sig-paren">(</span><em>txid</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.getTxOut" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>txid</strong> (<em>string</em>) – </li>
+<li><strong>index</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.getVersion">
+<code class="descclassname">Query.</code><code class="descname">getVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Query.getVersion" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>Query</strong> –</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.invoke">
+<code class="descclassname">Query.</code><code class="descname">invoke</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.invoke" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+<li><strong>params</strong> (<em>Array</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.invokeFunction">
+<code class="descclassname">Query.</code><code class="descname">invokeFunction</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>operation</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.invokeFunction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>scriptHash</strong> (<em>string</em>) – </li>
+<li><strong>operation</strong> (<em>string</em>) – </li>
+<li><strong>params</strong> (<em>Array</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.invokeScript">
+<code class="descclassname">Query.</code><code class="descname">invokeScript</code><span class="sig-paren">(</span><em>script</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.invokeScript" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>script</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Query.parse">
+<code class="descclassname">Query.</code><code class="descname">parse</code><a class="headerlink" href="#Query.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional parsing function for the response.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.parseWith">
+<code class="descclassname">Query.</code><code class="descname">parseWith</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.parseWith" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attaches a parser method to the Query. This method will be used to parse the response.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parser</strong> (<em>function</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Query.req">
+<code class="descclassname">Query.</code><code class="descname">req</code><a class="headerlink" href="#Query.req" title="Permalink to this definition">¶</a></dt>
+<dd><p>The request object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.sendRawTransaction">
+<code class="descclassname">Query.</code><code class="descname">sendRawTransaction</code><span class="sig-paren">(</span><em>transaction</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.sendRawTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>transaction</strong> (<em>Transaction|string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.submitBlock">
+<code class="descclassname">Query.</code><code class="descname">submitBlock</code><span class="sig-paren">(</span><em>block</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.submitBlock" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>block</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Query.validateAddress">
+<code class="descclassname">Query.</code><code class="descname">validateAddress</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#Query.validateAddress" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>addr</strong> (<em>string</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Query</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="queryRPC">
+<code class="descname">queryRPC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#queryRPC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for querying node RPC</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> (<em>string</em>) – Node URL.</li>
+<li><strong>method</strong> (<em>string</em>) – RPC Method name.</li>
+<li><strong>params</strong> (<em>Array</em>) – Array of parameters to send.</li>
+<li><strong>id</strong> (<em>number</em>) – Unique id to identity yourself. RPC should reply with same id.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Promise.&lt;Response&gt;</strong> – RPC Response</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sc.html" class="btn btn-neutral float-right" title="Smart Contract" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Ethan Fast, Jun Xiang Yak.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
