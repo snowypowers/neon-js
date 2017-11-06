@@ -6,6 +6,15 @@ This are docs built using `Sphinx` from `source` folder on master/dev.
 
 To contribute, please send your PRs to master/dev branches, editing the `rst` files in `source` folder.
 
+## Setup
+
+The docs branch utilises the git `subtree` command.
+
+```sh
+$ git subtree add --prefix=docs origin gh-pages
+```
+This command adds the `gh-pages` branch as a folder named `docs` in your local repo.
+
 ## Build
 
 ### Requirements
@@ -29,10 +38,12 @@ $ sphinx-build -b html . ../docs
 
 ## Deploy
 
-Deployment onto `gh-pages` requires a different approach from the classic push:
+Deployment is similar using the `subtree` command:
 
 ```sh
-$ git subtree push --prefix docs origin gh-pages
+$ git add docs
+$ git commit -m "update docs"
+$ git subtree push --prefix=docs origin gh-pages
 ```
 This command will push only the `docs` folder onto the `gh-pages` branch, exposing the `index.html` for Github to discover.
 
