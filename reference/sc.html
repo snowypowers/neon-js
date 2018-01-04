@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Smart Contract &mdash; neon-js 1.1.0 documentation</title>
+  <title>Smart Contract &mdash; neon-js 2.3.0 documentation</title>
   
 
   
@@ -30,12 +30,14 @@
   
 
   
+    <link rel="stylesheet" href="../_static/banner.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="neon-js 1.1.0 documentation" href="../index.html"/>
+    <link rel="top" title="neon-js 2.3.0 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="index.html"/>
         <link rel="next" title="Transactions" href="tx.html"/>
         <link rel="prev" title="RPC" href="rpc.html"/> 
@@ -67,7 +69,7 @@
             
             
               <div class="version">
-                1.1.0
+                2.3.0
               </div>
             
           
@@ -95,6 +97,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface.html">Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wallet.html">Wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transactions/index.html">Transactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rpc/index.html">Node RPC</a></li>
@@ -177,28 +180,152 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="smart-contract">
+  
+
+
+
+
+
+<div class="section" id="smart-contract">
 <h1>Smart Contract<a class="headerlink" href="#smart-contract" title="Permalink to this headline">¶</a></h1>
 <p>Module <code class="docutils literal"><span class="pre">sc</span></code></p>
+<dl class="class">
+<dt id="ContractParam">
+<em class="property">class </em><code class="descname">ContractParam</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ContractParam" title="Permalink to this definition">¶</a></dt>
+<dd><p>ContractParam models after the ContractParameter class in C#. It is useful to craft arguments that are used in invoke and invokefunction RPC calls.
+ContractParams come with convenient static methods to create arguments. For example, the byteArray method helps convert an address into reversed ScriptHash form used in smart contracts.</p>
+<dl class="function">
+<dt id="array">
+<code class="descname">array</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an Array ContractParam.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>params</strong> (<em>any</em>) &#8211; params to be encapsulated in an array.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ContractParam</strong> &#8211;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="boolean">
+<code class="descname">boolean</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Boolean ContractParam. Does basic checks to convert value into a boolean.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<em>any</em>) &#8211; A value that can be converted to a boolean</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ContractParam</strong> &#8211;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="byteArray">
+<code class="descname">byteArray</code><span class="sig-paren">(</span><em>value</em>, <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#byteArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a ByteArray ContractParam.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<em>any</em>) &#8211; </li>
+<li><strong>format</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; The format that this value represents. Different formats are parsed differently.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ContractParam</strong> &#8211;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="integer">
+<code class="descname">integer</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an Integer ContractParam. Does basic parsing and rounding to convert value into an Integer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<em>any</em>) &#8211; A value that can be parsed to an Integer using parseInt.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ContractParam</strong> &#8211;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="string">
+<code class="descname">string</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a String ContractParam.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; A string.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ContractParam</strong> &#8211;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="type">
+<code class="descname">type</code><a class="headerlink" href="#type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="value">
+<code class="descname">value</code><a class="headerlink" href="#value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="ScriptBuilder">
 <em class="property">class </em><code class="descname">ScriptBuilder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Builds a VM script in hexstring. Used for constructing smart contract method calls.</p>
 <dl class="function">
-<dt id="ScriptBuilder._emitAppCall">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">_emitAppCall</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>useTailCall</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder._emitAppCall" title="Permalink to this definition">¶</a></dt>
+<dt id="_emitAppCall">
+<code class="descname">_emitAppCall</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>useTailCall</em><span class="sig-paren">)</span><a class="headerlink" href="#_emitAppCall" title="Permalink to this definition">¶</a></dt>
 <dd><p>Appends a AppCall and scriptHash. Used to end off a script.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>scriptHash</strong> (<em>string</em>) – Hexstring(BE)</li>
-<li><strong>useTailCall</strong> (<em>boolean</em>) – Defaults to false</li>
+<li><strong>scriptHash</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; Hexstring(BE)</li>
+<li><strong>useTailCall</strong> (<a class="reference internal" href="#boolean" title="boolean"><em>boolean</em></a>) &#8211; Defaults to false</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -206,19 +333,19 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="ScriptBuilder._emitArray">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">_emitArray</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder._emitArray" title="Permalink to this definition">¶</a></dt>
+<dt id="_emitArray">
+<code class="descname">_emitArray</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="headerlink" href="#_emitArray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Private method to append an array</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>arr</strong> (<em>Array</em>) – </li>
+<li><strong>arr</strong> (<em>Array</em>) &#8211; </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -226,19 +353,19 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="ScriptBuilder._emitNum">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">_emitNum</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder._emitNum" title="Permalink to this definition">¶</a></dt>
+<dt id="_emitNum">
+<code class="descname">_emitNum</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_emitNum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Private method to append a number.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>num</strong> (<em>number</em>) – </li>
+<li><strong>num</strong> (<em>number</em>) &#8211; </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -246,19 +373,39 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="ScriptBuilder._emitString">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">_emitString</code><span class="sig-paren">(</span><em>hexstring</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder._emitString" title="Permalink to this definition">¶</a></dt>
+<dt id="_emitParam">
+<code class="descname">_emitParam</code><span class="sig-paren">(</span><em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#_emitParam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Private method to append a ContractParam</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> (<a class="reference internal" href="#ContractParam" title="ContractParam"><em>ContractParam</em></a>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_emitString">
+<code class="descname">_emitString</code><span class="sig-paren">(</span><em>hexstring</em><span class="sig-paren">)</span><a class="headerlink" href="#_emitString" title="Permalink to this definition">¶</a></dt>
 <dd><p>Private method to append a hexstring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>hexstring</strong> (<em>string</em>) – Hexstring(BE)</li>
+<li><strong>hexstring</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; Hexstring(BE)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -266,20 +413,20 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="ScriptBuilder.emit">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">emit</code><span class="sig-paren">(</span><em>op</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder.emit" title="Permalink to this definition">¶</a></dt>
+<dt id="emit">
+<code class="descname">emit</code><span class="sig-paren">(</span><em>op</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#emit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Appends an Opcode, followed by args</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>op</strong> (<em>OpCode</em>) – </li>
-<li><strong>args</strong> (<em>string</em>) – </li>
+<li><strong>op</strong> (<em>OpCode</em>) &#8211; </li>
+<li><strong>args</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -287,22 +434,22 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="ScriptBuilder.emitAppCall">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">emitAppCall</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>operation</em>, <em>args</em>, <em>useTailCall</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder.emitAppCall" title="Permalink to this definition">¶</a></dt>
+<dt id="emitAppCall">
+<code class="descname">emitAppCall</code><span class="sig-paren">(</span><em>scriptHash</em>, <em>operation</em>, <em>args</em>, <em>useTailCall</em><span class="sig-paren">)</span><a class="headerlink" href="#emitAppCall" title="Permalink to this definition">¶</a></dt>
 <dd><p>Appends args, operation and scriptHash</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>scriptHash</strong> (<em>string</em>) – Hexstring(BE)</li>
-<li><strong>operation</strong> (<em>string|null</em>) – ASCII, defaults to null</li>
-<li><strong>args</strong> (<em>Array|string|number|boolean</em>) – any</li>
-<li><strong>useTailCall</strong> (<em>boolean</em>) – Use TailCall instead of AppCall</li>
+<li><strong>scriptHash</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; Hexstring(BE)</li>
+<li><strong>operation</strong> (<em>string|null</em>) &#8211; ASCII, defaults to null</li>
+<li><strong>args</strong> (<em>Array|string|number|boolean</em>) &#8211; any</li>
+<li><strong>useTailCall</strong> (<a class="reference internal" href="#boolean" title="boolean"><em>boolean</em></a>) &#8211; Use TailCall instead of AppCall</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -310,19 +457,19 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="ScriptBuilder.emitPush">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">emitPush</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder.emitPush" title="Permalink to this definition">¶</a></dt>
+<dt id="emitPush">
+<code class="descname">emitPush</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#emitPush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Appends data depending on type. Used to append params/array lengths.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> (<em>Array|string|number|boolean</em>) – </li>
+<li><strong>data</strong> (<em>Array|string|number|boolean</em>) &#8211; </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -330,19 +477,19 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="ScriptBuilder.emitSysCall">
-<code class="descclassname">ScriptBuilder.</code><code class="descname">emitSysCall</code><span class="sig-paren">(</span><em>api</em><span class="sig-paren">)</span><a class="headerlink" href="#ScriptBuilder.emitSysCall" title="Permalink to this definition">¶</a></dt>
+<dt id="emitSysCall">
+<code class="descname">emitSysCall</code><span class="sig-paren">(</span><em>api</em><span class="sig-paren">)</span><a class="headerlink" href="#emitSysCall" title="Permalink to this definition">¶</a></dt>
 <dd><p>Appends a SysCall</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>api</strong> (<em>string</em>) – api of SysCall</li>
+<li><strong>api</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; api of SysCall</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> – this</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ScriptBuilder</strong> &#8211; this</p>
 </td>
 </tr>
 </tbody>
@@ -359,13 +506,16 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>props</strong> (<em>Object</em>) – Properties passed in as an object.</li>
-<li><strong>props.scriptHash</strong> (<em>string</em>) – The contract scriptHash.</li>
-<li><strong>props.operation</strong> (<em>string</em>) – The method name to call.</li>
-<li><strong>props.args</strong> (<em>Array</em>) – The arguments of the method to pass in.</li>
-<li><strong>props.useTailCall</strong> (<em>boolean</em>) – To use Tail Call.</li>
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>props</strong> (<em>object</em>) &#8211; Properties passed in as an object.</li>
+<li><strong>props.scriptHash</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; The contract scriptHash.</li>
+<li><strong>props.operation</strong> (<a class="reference internal" href="#string" title="string"><em>string</em></a>) &#8211; The method name to call.</li>
+<li><strong>props.args</strong> (<em>Array</em>) &#8211; The arguments of the method to pass in.</li>
+<li><strong>props.useTailCall</strong> (<a class="reference internal" href="#boolean" title="boolean"><em>boolean</em></a>) &#8211; To use Tail Call.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>string</strong> &#8211; The VM Script.</p>
 </td>
 </tr>
 </tbody>
@@ -411,6 +561,25 @@
 
   </div>
   
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: 2.3.0
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../1.1.1/index.html">1.1.1</a></dd>
+            <dd><a href="../2.3.0/reference/sc.html">2.3.0</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../dev/reference/sc.html">dev</a></dd>
+            <dd><a href="../master/reference/sc.html">master</a></dd>
+        </dl>
+    </div>
+</div>
 
 
   
@@ -418,7 +587,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.1.0',
+            VERSION:'2.3.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

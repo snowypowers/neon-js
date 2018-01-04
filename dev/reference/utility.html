@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Utility &mdash; neon-js 2.0.0alpha documentation</title>
+  <title>Utility &mdash; neon-js 2.2.2 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="neon-js 2.0.0alpha documentation" href="../index.html"/>
+    <link rel="top" title="neon-js 2.2.2 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="index.html"/>
         <link rel="next" title="Wallet" href="wallet.html"/>
         <link rel="prev" title="Transactions" href="tx.html"/> 
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                2.0.0
+                2.2.2
               </div>
             
           
@@ -97,6 +97,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface.html">Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wallet.html">Wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transactions/index.html">Transactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rpc/index.html">Node RPC</a></li>
@@ -184,7 +185,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="utility">
+  
+
+
+    
+    
+
+
+
+    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../../2.3.0/reference/utility.html"><b>Warning:</b> This document is for the development version of neon-js. The latest version is 2.3.0.</a></p>
+<div class="section" id="utility">
 <h1>Utility<a class="headerlink" href="#utility" title="Permalink to this headline">¶</a></h1>
 <p>Module <code class="docutils literal"><span class="pre">u</span></code></p>
 <div class="section" id="format">
@@ -216,7 +226,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>str</strong> (<em>string</em>) &#8211; ASCII string</li>
+<li><strong>str</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; ASCII string</li>
 </ul>
 </td>
 </tr>
@@ -235,11 +245,11 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>str</strong> (<em>string</em>) &#8211; HEX string</li>
+<li><strong>str</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; HEX string</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>arrayBuffer</strong> &#8211;</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>Array.&lt;number&gt;</strong> &#8211;</p>
 </td>
 </tr>
 </tbody>
@@ -273,7 +283,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>str</strong> (<em>string</em>) &#8211; ASCII string</li>
+<li><strong>str</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; ASCII string</li>
 </ul>
 </td>
 </tr>
@@ -287,13 +297,13 @@
 <dl class="function">
 <dt id="int2hex">
 <code class="descname">int2hex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#int2hex" title="Permalink to this definition">¶</a></dt>
-<dd><p>convert an integer to hex and add leading zeros</p>
+<dd><p>convert an integer to big endian hex and add leading zeros</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>mNumber</strong> (<em>number</em>) &#8211; </li>
+<li><strong>num</strong> (<em>number</em>) &#8211; </li>
 </ul>
 </td>
 </tr>
@@ -307,15 +317,19 @@
 <dl class="function">
 <dt id="num2hexstring">
 <code class="descname">num2hexstring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#num2hexstring" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a number to a hexstring of a suitable size</p>
+<dd><p>Converts a number to a big endian hexstring of a suitable size, optionally little endian</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
 <li><strong>num</strong> (<em>number</em>) &#8211; </li>
-<li><strong>size</strong> (<em>number</em>) &#8211; The required size in chars, eg 2 for Uint8, 4 for Uint16. Defaults to 2.</li>
+<li><strong>size</strong> (<em>number</em>) &#8211; The required size in bytes, eg 1 for Uint8, 2 for Uint16. Defaults to 1.</li>
+<li><strong>littleEndian</strong> (<a class="reference internal" href="sc.html#boolean" title="boolean"><em>boolean</em></a>) &#8211; Encode the hex in little endian form</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>string</strong> &#8211;</p>
 </td>
 </tr>
 </tbody>
@@ -325,13 +339,14 @@
 <dl class="function">
 <dt id="num2fixed8">
 <code class="descname">num2fixed8</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#num2fixed8" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a number to a Fixed8 format string</p>
+<dd><p>Converts a number to a Fixed8 format hex string</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
 <li><strong>num</strong> (<em>number</em>) &#8211; </li>
+<li><strong>size</strong> (<em>number</em>) &#8211; output size in bytes</li>
 </ul>
 </td>
 </tr>
@@ -345,13 +360,13 @@
 <dl class="function">
 <dt id="fixed82num">
 <code class="descname">fixed82num</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fixed82num" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a Fixed8 string to number</p>
+<dd><p>Converts a Fixed8 hex string to its original number</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>fixed8</strong> (<em>string</em>) &#8211; number in Fixed8 representation</li>
+<li><strong>fixed8hex</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; number in Fixed8 representation</li>
 </ul>
 </td>
 </tr>
@@ -371,7 +386,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>num</strong> &#8211; The number</li>
+<li><strong>num</strong> (<em>number</em>) &#8211; The number</li>
 </ul>
 </td>
 </tr>
@@ -391,8 +406,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>str1</strong> (<em>string</em>) &#8211; HEX string</li>
-<li><strong>str2</strong> (<em>string</em>) &#8211; HEX string</li>
+<li><strong>str1</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; HEX string</li>
+<li><strong>str2</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; HEX string</li>
 </ul>
 </td>
 </tr>
@@ -432,7 +447,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>hex</strong> (<em>string</em>) &#8211; HEX string</li>
+<li><strong>hex</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; HEX string</li>
 </ul>
 </td>
 </tr>
@@ -455,7 +470,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>hex</strong> (<em>string</em>) &#8211; String to hash</li>
+<li><strong>hex</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; String to hash</li>
 </ul>
 </td>
 </tr>
@@ -475,7 +490,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>hex</strong> (<em>string</em>) &#8211; String to hash</li>
+<li><strong>hex</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; String to hash</li>
 </ul>
 </td>
 </tr>
@@ -495,7 +510,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
-<li><strong>hex</strong> (<em>string</em>) &#8211; String to hash</li>
+<li><strong>hex</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; String to hash</li>
 </ul>
 </td>
 </tr>
@@ -518,7 +533,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>str</strong> (<em>string</em>) &#8211; The string to read as a stream.</li>
+<li><strong>str</strong> (<a class="reference internal" href="sc.html#string" title="string"><em>string</em></a>) &#8211; The string to read as a stream.</li>
 </ul>
 </td>
 </tr>
@@ -636,9 +651,14 @@
     </span>
     <div class="rst-other-versions">
         <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../1.1.1/index.html">1.1.1</a></dd>
+            <dd><a href="../../2.3.0/reference/utility.html">2.3.0</a></dd>
+        </dl>
+        <dl>
             <dt>Branches</dt>
             <dd><a href="utility.html">dev</a></dd>
-            <dd><a href="../../master/index.html">master</a></dd>
+            <dd><a href="../../master/reference/utility.html">master</a></dd>
         </dl>
     </div>
 </div>
@@ -649,7 +669,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.0alpha',
+            VERSION:'2.2.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
