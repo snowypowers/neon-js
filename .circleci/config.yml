@@ -10,7 +10,7 @@ e2e: &e2e
 
     - image: cityofzion/neo-local-privatenet
 
-version: 2
+version: 2.1
 jobs:
   setup:
     <<: *defaults
