@@ -2,6 +2,7 @@ import { Query, RPCResponse, RPCErrorResponse } from "../Query";
 import logger from "../../logging";
 import Axios, { AxiosRequestConfig } from "axios";
 import { timeout } from "../../settings";
+import { BatchQuery } from "../BatchQuery";
 
 const log = logger("rpc");
 
@@ -32,6 +33,32 @@ export async function sendQuery<TResponse>(
 
   const response = await Axios.post(url, query.export(), conf);
   return response.data as RPCResponse<TResponse>;
+}
+
+async function sendBatch<
+  TParams extends unknown[],
+  TResponses extends unknown[]
+>(
+  url: string,
+  batch: BatchQuery<TParams, TResponses>,
+  config: RpcConfig = {}
+): Promise<RPCResponse<TResponses>> {
+  const conf = Object.assign(
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      timeout: timeout.rpc,
+    },
+    config
+  );
+
+  const response = await Axios.post(
+    url,
+    batch.queries.map((q) => q.export()),
+    conf
+  );
+  return response.data as RPCResponse<TResponses>;
 }
 
 /**
@@ -69,6 +96,17 @@ export class RpcDispatcher {
       throw new RpcError(rpcResponse.error);
     }
     return rpcResponse.result;
+  }
+
+  public async batch<TParams extends unknown[], TResponses extends unknown[]>(
+    batchQuery: BatchQuery<TParams, TResponses>,
+    config?: AxiosRequestConfig
+  ): Promise<TResponses> {
+    const responses = await sendBatch(this.url, batchQuery, config ?? {});
+    if (responses.error) {
+      throw new RpcError(responses.error);
+    }
+    return responses.result;
   }
 }
 
