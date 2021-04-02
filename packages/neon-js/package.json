@@ -35,7 +35,7 @@
     "build:cjs": "tsc --module commonjs --outDir lib/node/cjs",
     "build:web": "webpack",
     "clean": "rimraf ./lib tsconfig.tsbuildinfo",
-    "prepublishOnly": "yarn clean && yarn build && yarn build:cjs && yarn build:web --mode production",
+    "prepublishOnly": "yarn build && yarn build:cjs && yarn build:web --mode production",
     "lint": "eslint src/**/*.ts __tests__/**/*.ts __integration__/**/*.ts",
     "pretty": "prettier --write --loglevel=warn \"./{src,__{tests,integration}__}/**/*.ts\"",
     "start": "yarn build && jest --watch",

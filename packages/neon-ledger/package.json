@@ -32,7 +32,7 @@
     "build": "tsc -b",
     "build:cjs": "tsc --module commonjs --outDir lib/node/cjs",
     "clean": "rimraf ./lib tsconfig.tsbuildinfo",
-    "prepublishOnly": "yarn clean && yarn build && yarn build:cjs",
+    "prepublishOnly": "yarn build && yarn build:cjs",
     "lint": "eslint src/**/*.ts __tests__/**/*.ts __integration__/**/*.ts",
     "pretty": "prettier --write --loglevel=warn \"./{src,__{tests,integration}__}/**/*.ts\"",
     "start": "yarn build && jest --watch",
