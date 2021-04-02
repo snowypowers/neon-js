@@ -21,7 +21,7 @@
   "author": "Yak Jun Xiang <snowypowers@gmail.com> (https://github.com/snowypowers)",
   "license": "MIT",
   "main": "lib/node/esm/index.js",
-  "browser": "lib/script/index.js",
+  "browser": "lib/browser/umd/index.js",
   "module": "lib/node/esm/index.js",
   "types": "lib/node/esm/index.d.ts",
   "exports": {
@@ -30,13 +30,13 @@
       "import": "./lib/node/esm/index.js",
       "require": "./lib/node/cjs/index.js"
     },
-    "script": "./lib/script/index.js",
+    "browser": "./lib/browser/umd/index.js",
     "default": "./lib/node/esm/index.js"
   },
   "scripts": {
     "build": "tsc -b",
     "build:cjs": "tsc --module commonjs --outDir lib/node/cjs",
-    "build:web": "webpack",
+    "build:web": "webpack --mode development",
     "clean": "rimraf ./lib tsconfig.tsbuildinfo",
     "prepublishOnly": "yarn build && yarn build:cjs && yarn build:web --mode production",
     "lint": "eslint src/**/*.ts __tests__/**/*.ts __integration__/**/*.ts",

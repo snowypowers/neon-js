@@ -1,3 +1,3 @@
-const gen = require("../../webpack.web.cjs");
+const gen = require("../../webpack.web.umd");
 
-module.exports = gen(__dirname, "NeonCore");
+module.exports = (_, argv) => gen(argv.mode, __dirname, "NeonCore");

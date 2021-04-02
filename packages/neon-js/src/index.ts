@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import apiPlugin from "@cityofzion/neon-api";
-import neonCore from "@cityofzion/neon-core";
+import * as neonCore from "@cityofzion/neon-core";
 import defaultNetworks from "./networks";
 const neonJs = apiPlugin(neonCore);
 import * as experimental from "./experimental";
