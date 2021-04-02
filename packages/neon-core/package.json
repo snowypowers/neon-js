@@ -20,7 +20,7 @@
   ],
   "author": "Yak Jun Xiang <snowypowers@gmail.com> (https://github.com/snowypowers)",
   "license": "MIT",
-  "main": "lib/node/cjs/index.js",
+  "main": "lib/node/esm/index.js",
   "browser": "lib/script/index.js",
   "module": "lib/node/esm/index.js",
   "types": "lib/node/esm/index.d.ts",
@@ -30,7 +30,8 @@
       "import": "./lib/node/esm/index.js",
       "require": "./lib/node/cjs/index.js"
     },
-    "script": "./lib/script/index.js"
+    "script": "./lib/script/index.js",
+    "default": "./lib/node/esm/index.js"
   },
   "scripts": {
     "build": "tsc -b",
