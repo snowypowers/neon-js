@@ -5,10 +5,7 @@ module.exports = {
   baseUrl: "/neo3/neon-js/",
   organizationName: "cityofzion",
   projectName: "neon-js",
-  scripts: [
-    "https://buttons.github.io/buttons.js",
-    // "https://unpkg.com/@cityofzion/neon-js@next",
-  ],
+  scripts: ["https://buttons.github.io/buttons.js"],
   favicon: "img/favicon.png",
   customFields: {
     users: [
